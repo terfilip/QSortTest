@@ -69,15 +69,15 @@
 	  }
 	  $IDX = (int)$argv[1];
 	  $ARRAY_SIZE = pow_ten($IDX);
-	  $a = array();
+	  $a = new SplFixedArray($ARRAY_SIZE);
 	  $ifName = "10e".$IDX.".txt";
 	  //$ofName = "10e".$IDX."sortedPHP.txt";
 	  init_array($a, $ifName, $ARRAY_SIZE);
 	  quicksort($a, 0, $ARRAY_SIZE - 1);
-	  echo "Sorted ".$ARRAY_SIZE." ints in php".PHP_EOL;
 	  //Used to test sorting
 	  //print_array($a, $ofName);
 	  unset($a);
+	  echo "Sorted ".$ARRAY_SIZE." ints in php".PHP_EOL;
   }
   main($argc, $argv);
 ?>

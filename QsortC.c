@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
 		
 	array_init(a, inputFile);
 	quicksort(a, 0, SIZE - 1);
-	printf("Quicksorted %d ints in C\n",SIZE);
 	//Used to test sorting
 	//array_print(a, outputFile, SIZE);
 	free(a);
+	printf("Quicksorted %d ints in C\n",SIZE);
 	return 0;
 }
 

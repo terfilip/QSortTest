@@ -22,9 +22,9 @@ class Qsort
 
 			initArray(a, ifName);
 			quicksort(a, 0, ARRAY_LENGTH - 1);
-			System.out.printf("Sorted %d integers in Java.\n",ARRAY_LENGTH);
 			//Used for testing
 			//printArray(a, ofName);
+			System.out.printf("Sorted %d integers in Java.\n",ARRAY_LENGTH);
 		} catch(IOException ioe) {
 			System.out.println("File not found");
 			ioe.printStackTrace();

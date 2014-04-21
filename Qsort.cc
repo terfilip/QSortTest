@@ -1,3 +1,4 @@
+//#include <stdio.h>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -33,10 +34,10 @@ int main(int argc, char *argv[])
 	
 	array_init(a, inputFile);		
 	quicksort(a, 0, SIZE - 1);
-	cout << "Sorted "<< SIZE <<" integers in C++." << endl;
 	//To Test Sorting
 	//array_print(a, outputFile, SIZE);
 	delete[] a;
+	cout << "Sorted "<< SIZE <<" integers in C++." << endl;
 	return 0;
 }
 
