@@ -16,10 +16,10 @@ class Qsort
 			}
 			final int IDX = Integer.parseInt(args[0]);
 			final int ARRAY_LENGTH = powTen(IDX);
-			int[] a = new int[ARRAY_LENGTH];
 			String ifName = String.format("%s%d%s","10e",IDX, ".txt");
 			//String ofName = String.format("%s%d%s","10e",IDX, "sortedJava.txt");
 
+			int[] a = new int[ARRAY_LENGTH];
 			initArray(a, ifName);
 			quicksort(a, 0, ARRAY_LENGTH - 1);
 			//Used for testing

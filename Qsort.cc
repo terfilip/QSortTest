@@ -1,15 +1,13 @@
-#include <fstream>
+#include <cstdio>
 #include <iostream>
-#include <string>
 #include <cstdlib>
-#include <sstream>
+#include <algorithm> 
 
 using namespace std;
 
 void quicksort(int *a, int left, int right);
 int partition(int *a, int left, int right, int pivotIdx);
-void swap(int *a, int x, int y);
-void array_init(int *a, string filename);
+void array_init(int *a, char * filename);
 //void array_print(int *a, string filename, int size);
 int pow_ten(int idx);
 
@@ -21,16 +19,13 @@ int main(int argc, char *argv[])
 	}
 	const int IDX = atoi(argv[1]);
 	const int SIZE = pow_ten(IDX);
+	const short FNAME_SIZE = 9;
+	char inputFile[FNAME_SIZE];
+	sprintf(inputFile, "%s%d%s", "10e",IDX, ".txt");
+	// char outputFile[FNAME_SIZE];
+	// sprintf(inputFile, "%s%d%s", "10e",IDX, "sortedC++.txt");
+
 	int *a = new int[SIZE];
-	ostringstream iName;
-	//ostringstream oName;
-	
-	iName << "10e" << IDX << ".txt";
-	//oName << "10e" << IDX << "sortedC++.txt";
-	
-	string inputFile = iName.str();
-	//string outputFile = oName.str();
-	
 	array_init(a, inputFile);		
 	quicksort(a, 0, SIZE - 1);
 	//To Test Sorting
@@ -40,15 +35,15 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-void array_init(int *a, string filename)
+void array_init(int *a, char *filename)
 {
-	ifstream iF (filename.c_str());
-	string line; 
-	int i = 0;
-	while (getline(iF,line)) {
-		istringstream(line) >> a[i++];
+	const short MAX_CHARS = 12;
+	FILE *iF = fopen(filename, "r");
+	char line[MAX_CHARS]; int i = 0;
+	while (fgets(line, MAX_CHARS, iF) != NULL) {
+		a[i++] = atoi(line);
 	}
-	iF.close();
+	fclose(iF);
 }
 /*  
 void array_print(int *a, string filename, int size)
@@ -75,23 +70,23 @@ void quicksort (int *a, int left, int right)
 int partition(int *a, int left, int right, int pivotIdx)
 {
 	int pivotVal = a[pivotIdx];
-	swap(a, pivotIdx, right);
-	int storeIdx = left; int i;
+	swap(a[pivotIdx], a[right]);
+	int storeIdx = left;
 	for(int i = left; i < right; i++) {
 		if(a[i] < pivotVal) {
-			swap(a, i, storeIdx++);
+			swap(a[i], a[storeIdx++]);
 		}
 	}
-	swap(a, storeIdx, right);
+	swap(a[storeIdx], a[right]);
 	return storeIdx;
 }
 
-void swap(int *a, int x, int y)
-{
-	int tmp = a[x];
-	a[x] = a[y];
-	a[y] = tmp;
-}
+// void swap(int *a, int x, int y)
+// {
+// 	int tmp = a[x];
+// 	a[x] = a[y];
+// 	a[y] = tmp;
+// }
 
 /*Own function to avoid using 
  * library version in each language

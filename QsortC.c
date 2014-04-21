@@ -19,13 +19,13 @@ int main(int argc, char *argv[])
 	}
 	int idx = atoi(argv[1]);
 	int SIZE = pow_ten(idx);
-	int *a = malloc(SIZE * sizeof(int));
 	
 	char inputFile[FNAME_SIZE];
 	//char outputFile[FNAME_SIZE + 7];
 	sprintf(inputFile, "%s%d%s", "10e",idx, ".txt");
 	//sprintf(outputFile, "%s%d%s","10e",idx, "sortedC.txt");
 		
+	int *a = malloc(SIZE * sizeof(int));
 	array_init(a, inputFile);
 	quicksort(a, 0, SIZE - 1);
 	//Used to test sorting
