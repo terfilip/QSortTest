@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import with_statement
 
 from sys import argv
 
@@ -41,10 +42,10 @@ def main():
         return
     IDX = int(argv[1])
 
-    ifName = "10e{}.txt".format(IDX)
+    ifName = "10e" + str(IDX) + ".txt"
     a = list(init_array(ifName))
     quicksort(a, 0, len(a) - 1)
-    print("Sorted {} ints in python.".format(len(a)))
+    print("Sorted " + str(len(a)) + " ints in python.")
     #Used to test sorting
     # print_array(a, "10e{}sortedPY.txt".format(IDX))
 
