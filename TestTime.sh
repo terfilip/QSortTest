@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 #The script that conducts the test and prints results in 
@@ -57,8 +58,8 @@ function extract_seconds()
 function print_headings()
 {
 	echo " ,Seconds taken to sort array, , , , , , ," > RunTimesTable.csv
-	headings="Language"
-	exp="2"
+	local headings="Language"
+	local exp="2"
 	while [ $exp -lt 9 ] 
 		do
 		headings="$headings,10^$exp integers"
