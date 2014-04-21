@@ -68,7 +68,7 @@
 		return;
 	  }
 	  $IDX = (int)$argv[1];
-	  $ARRAY_SIZE = pow(10,$IDX);
+	  $ARRAY_SIZE = pow_ten($IDX);
 	  $a = array();
 	  $ifName = "10e".$IDX.".txt";
 	  //$ofName = "10e".$IDX."sortedPHP.txt";
