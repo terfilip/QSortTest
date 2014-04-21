@@ -79,5 +79,6 @@
 	  unset($a);
 	  echo "Sorted ".$ARRAY_SIZE." ints in php".PHP_EOL;
   }
+  ini_set('memory_limit','8G');
   main($argc, $argv);
 ?>
