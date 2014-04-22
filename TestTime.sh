@@ -12,7 +12,7 @@ function print_cell()
 		do
 		local seconds_sum="0"
 		local k="0"
-		local trial_runs="10"
+		local trial_runs="5"
 		while [ $k -lt $trial_runs ]
 			do
 			local trial_result="$(extract_seconds $1 $j )"
@@ -68,9 +68,10 @@ function print_headings()
 	echo $headings >> RunTimesTable.csv
 }
 
+#Running the script will delete any previous RunTimesTable, to save the hassle of deleting it manually
 print_headings
-i="0" 
-prog_commands=( ./QsortC ./Qsort "java Qsort" ./Qsort.py "pypy Qsort.py" ./Qsort.php "jython Qsort.py" )
+i="0"
+prog_commands=( ./QsortC ./Qsort "java Qsort" ./Qsort.py "pypy Qsort.py" ./Qsort.php "jython -J-Xmx8000m Qsort.py" )
 langs=(C C++ Java "Python 3" "PyPy2.2.1" PHP Jython)
 while [ $i -lt ${#prog_commands[@]} ]
 	do

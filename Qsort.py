@@ -31,9 +31,9 @@ def init_array(filename):
             yield int(line)
 
 
-def print_array(a, filename):
-    with open(filename, 'w') as f:
-        f.write('\n'.join(str(n) for n in a))
+# def print_array(a, filename):
+#     with open(filename, 'w') as f:
+#         f.write('\n'.join(str(n) for n in a))
 
 
 def main():
