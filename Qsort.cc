@@ -8,7 +8,7 @@ using namespace std;
 void quicksort(int *a, int left, int right);
 int partition(int *a, int left, int right, int pivotIdx);
 void array_init(int *a, char * filename);
-//void array_print(int *a, string filename, int size);
+//void array_print(int *a, char *filename, int size);
 int pow_ten(int idx);
 
 int main(int argc, char *argv[])
@@ -48,11 +48,12 @@ void array_init(int *a, char *filename)
 /*  
 void array_print(int *a, string filename, int size)
 {
-	ofstream oF (filename.c_str());
-	for (int i = 0; i < size; i++) {
-		oF << a[i] << endl;
+	FILE *oF = fopen(filename, "w");
+	int i;
+	for (i = 0; i < size; i++) {
+		fprintf(oF,"%d\n", a[i]);
 	}
-	oF.close();
+	fclose(oF);
 }
 */
 
