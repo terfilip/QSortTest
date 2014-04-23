@@ -11,8 +11,8 @@
 0. Compile everything:
 	* javac *.java
 	* gcc CheckSort -o CheckSort.c
-	* gcc -O2{or 3} QsortC -o QsortC.c
-	* g++ -O2{or 3} Qsort -o Qsort.cc
+	* gcc -O2{or 3} QsortC.c -o QsortC
+	* g++ -O2{or 3} Qsort.cc -o Qsort
 0. Make scripts executable:
 	* chmod +x *.py
 	* chmod +x Qsort.php
