@@ -10,7 +10,7 @@
 0. Download all programs from the repo
 0. Compile everything:
 	* javac *.java
-	* gcc CheckSort -o CheckSort.c
+	* gcc CheckSort.c -o CheckSort
 	* gcc -O2{or 3} QsortC.c -o QsortC
 	* g++ -O2{or 3} Qsort.cc -o Qsort
 0. Make scripts executable:
