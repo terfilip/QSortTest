@@ -22,9 +22,9 @@
     - `./TestTime.sh`
 0. The results can be found at `cmplang/results/RunTimesTable.csv`
 
-0. To check sorting:
-    - If files with sorted numbers are not      printed:  `./CheckSort.sh print`
-    - If the files have already been printed:
+####Checking Sorting
+- If files with sorted numbers are not  printed:  `./CheckSort.sh print`
+- If the files have already been printed:
      `./CheckSort.sh run`
 
 
