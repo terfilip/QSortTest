@@ -1,8 +1,6 @@
 #!/usr/bin/php
 <?php
-
-  function quicksort(& $a, $left, $right)
-  {
+  function quicksort(& $a, $left, $right) {
 	  if ($left < $right) {
 		  $pivotIdx = $left + (($right - $left) / 2);
 		  $newPivotIdx = partition($a, $left, $right, $pivotIdx);
@@ -11,8 +9,7 @@
 	}
   }
 
-  function partition(& $a, $left, $right, $pivotIdx)
-  {
+  function partition(& $a, $left, $right, $pivotIdx) {
 	  $pivotVal = $a[$pivotIdx];
 	  swap($a, $pivotIdx, $right);
 	  $storeIdx = $left;
@@ -26,15 +23,13 @@
 	  return $storeIdx;
   }
 
-  function swap(& $a, $x, $y)
-  {
+  function swap(& $a, $x, $y) {
 	  $tmp = $a[$x];
 	  $a[$x] = $a[$y];
 	  $a[$y] = $tmp;
   }
 
-  function init_array(& $a, $filename, $size)
-  {
+  function init_array(& $a, $filename, $size) {
 	  $iF = fopen($filename, "r"); $i = 0;
 	  while($i < $size) {
 	    $a[$i++] = (int)fgets($iF);
@@ -52,17 +47,14 @@
   }
 */
 
-  
-  function pow_ten($idx)
-  {
-	if($idx == 0) 
+  function pow_ten($idx) {
+	if($idx == 0)
 		return 1;
-	 else 
+	 else
 		 return 10 * pow_ten($idx - 1);
   }
 
-  function main($argc, $argv)
-  {
+  function main($argc, $argv) {
 	  if($argc != 2) {
 		echo "Usage Qsort.php <power of 10>".PHP_EOL;
 		return;

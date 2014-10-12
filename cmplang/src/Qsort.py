@@ -2,8 +2,6 @@
 from __future__ import with_statement
 from sys import argv
 
-
-
 def quicksort(a, left, right):
     if left < right:
         pivotIdx = left + ((right - left) // 2)

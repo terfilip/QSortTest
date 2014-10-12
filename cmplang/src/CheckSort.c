@@ -2,7 +2,7 @@
  * because the program is used on files that contain
  * numbers that are at most 10 digits long(max number of digits for int32)
  * + null terminator. So the program will not work on numbers greater
- * than 10 digits, unless modified. 
+ * than 10 digits, unless modified.
  */
 
 #include <stdio.h>
@@ -11,8 +11,7 @@
 
 #define numChars 12
 
-void file_check(char * filename)
-{
+void file_check(char * filename) {
 	FILE *toCheck = fopen(filename, "r");
 	if(!toCheck) {
 		puts("File not found");
@@ -25,7 +24,7 @@ void file_check(char * filename)
 		if(atoi(line) > atoi(nextLine)) {
 			printf("%s is NOT SORTED. Error at lines %d and %d.\n",filename, i, i-1);
 			sorted = 0;
-			break; 
+			break;
 		}
 		memcpy(line, nextLine, sizeof(nextLine));
 		i++;
@@ -36,8 +35,7 @@ void file_check(char * filename)
 	}
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	if (argc != 2) {
 		puts("usage: ./CheckSort <filename>");
 		return 0;
@@ -45,4 +43,3 @@ int main(int argc, char *argv[])
 	file_check(argv[1]);
 	return 0;
 }
-

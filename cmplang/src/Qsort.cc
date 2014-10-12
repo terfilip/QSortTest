@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <iostream>
 #include <cstdlib>
-#include <algorithm> 
+#include <algorithm>
 
 using namespace std;
 
@@ -11,8 +11,7 @@ void array_init(int *a, char * filename);
 //void array_print(int *a, char *filename, int size);
 int pow_ten(int idx);
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	if(argc != 2) {
 		cout << "Usage: ./Qsort <powerOfTen>" << endl;
 		return 0;
@@ -26,7 +25,7 @@ int main(int argc, char *argv[])
 	// sprintf(inputFile, "%s%d%s", "10e",IDX, "sortedC++.txt");
 
 	int *a = new int[SIZE];
-	array_init(a, inputFile);		
+	array_init(a, inputFile);
 	quicksort(a, 0, SIZE - 1);
 	//To Test Sorting
 	//array_print(a, outputFile, SIZE);
@@ -35,8 +34,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-void array_init(int *a, char *filename)
-{
+void array_init(int *a, char *filename) {
 	const short MAX_CHARS = 12;
 	FILE *iF = fopen(filename, "r");
 	char line[MAX_CHARS]; int i = 0;
@@ -45,9 +43,8 @@ void array_init(int *a, char *filename)
 	}
 	fclose(iF);
 }
-/*  
-void array_print(int *a, string filename, int size)
-{
+/*
+void array_print(int *a, string filename, int size) {
 	FILE *oF = fopen(filename, "w");
 	int i;
 	for (i = 0; i < size; i++) {
@@ -58,8 +55,7 @@ void array_print(int *a, string filename, int size)
 */
 
 
-void quicksort (int *a, int left, int right)
-{
+void quicksort (int *a, int left, int right) {
 	if (left < right) {
 			int pivotIdx = left + ((right - left)/2);
 			int newPivotIdx = partition(a, left, right, pivotIdx);
@@ -68,8 +64,7 @@ void quicksort (int *a, int left, int right)
 		}
 }
 
-int partition(int *a, int left, int right, int pivotIdx)
-{
+int partition(int *a, int left, int right, int pivotIdx) {
 	int pivotVal = a[pivotIdx];
 	swap(a[pivotIdx], a[right]);
 	int storeIdx = left;
@@ -89,13 +84,12 @@ int partition(int *a, int left, int right, int pivotIdx)
 // 	a[y] = tmp;
 // }
 
-/*Own function to avoid using 
+/*Own function to avoid using
  * library version in each language
  */
-int pow_ten(int idx)
-{
-	if (idx == 0) 
+int pow_ten(int idx) {
+	if (idx == 0)
 	    return 1;
-	else 
+	else
 	    return 10 * pow_ten(idx - 1);
 }

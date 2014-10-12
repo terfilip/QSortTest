@@ -5,12 +5,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-class Qsort
-{
-	public static void main(String[] args)
-	{
+class Qsort {
+	public static void main(String[] args) {
 		try {
-			if (args.length != 1) { 
+			if (args.length != 1) {
 				System.out.println("Usage java Qsort <powerOfTen>");
 				System.exit(0);
 			}
@@ -40,8 +38,7 @@ class Qsort
 		oStream.close();
 	}
 	*/
-	public static void initArray(int[] a, String inFileName) throws IOException
-	{
+	public static void initArray(int[] a, String inFileName) throws IOException {
 		Scanner iStream = new Scanner(new File(inFileName));
 		int i = 0;
 		while(iStream.hasNextInt()) {
@@ -50,8 +47,7 @@ class Qsort
 		iStream.close();
 	}
 
-	public static void quicksort(int[] a, int left, int right)
-	{
+	public static void quicksort(int[] a, int left, int right) {
 		if (left < right) {
 			int pivotIdx = left + ((right - left)/2);
 			int newPivotIdx = partition(a, left, right, pivotIdx);
@@ -60,8 +56,7 @@ class Qsort
 		}
 	}
 
-	public static int partition(int[] a, int left, int right, int pivotIdx)
-	{
+	public static int partition(int[] a, int left, int right, int pivotIdx) {
 		int pivotVal = a[pivotIdx];
 		swap(a, pivotIdx, right);
 		int storeIdx = left;
@@ -74,19 +69,16 @@ class Qsort
 		return storeIdx;
 	}
 
-	public static void swap(int[] a, int x, int y)
-	{
+	public static void swap(int[] a, int x, int y) {
 		int tmp = a[x];
 		a[x] = a[y];
 		a[y] = tmp;
 	}
-	
-	public static int powTen(int idx) 
-	{
-		if (idx == 0) 
+
+	public static int powTen(int idx) {
+		if (idx == 0)
 			return 1;
-		else 
+		else
 			return 10 * powTen(idx - 1);
 	}
-
 }

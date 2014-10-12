@@ -19,12 +19,12 @@ int main(int argc, char *argv[])
 	}
 	int idx = atoi(argv[1]);
 	int SIZE = pow_ten(idx);
-	
+
 	char inputFile[FNAME_SIZE];
 	//char outputFile[FNAME_SIZE + 7];
 	sprintf(inputFile, "%s%d%s", "10e",idx, ".txt");
 	//sprintf(outputFile, "%s%d%s","10e",idx, "sortedC.txt");
-		
+
 	int *a = malloc(SIZE * sizeof(int));
 	array_init(a, inputFile);
 	quicksort(a, 0, SIZE - 1);
@@ -89,9 +89,8 @@ void swap(int *a, int x, int y) {
 
 int pow_ten(int idx)
 {
-	if (idx == 0) 
+	if (idx == 0)
 		return 1;
-	else 
+	else
 		return 10 * pow_ten(idx - 1);
 }
-

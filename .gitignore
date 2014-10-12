@@ -4,3 +4,6 @@ Qsort
 *.txt
 *.ods
 *.ods#
+.DS_Store
+bin/
+qshadoop/
