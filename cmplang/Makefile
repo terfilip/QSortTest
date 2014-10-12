@@ -23,5 +23,4 @@ Qsort:
 java:
 	$(JC) $(SRCDIR)/*.java -d $(BINDIR)
 
-clean:
-	rm -rf *o hello
+
