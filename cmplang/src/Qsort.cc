@@ -2,58 +2,59 @@
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>
+#include <cstring>
 
 using namespace std;
+
+const int STRING_BUFFER = 24;
 
 void quicksort(int *a, int left, int right);
 int partition(int *a, int left, int right, int pivotIdx);
 void array_init(int *a, char * filename);
-//void array_print(int *a, char *filename, int size);
+void array_print(int *a, char *filename, int size);
 int pow_ten(int idx);
 
 int main(int argc, char *argv[]) {
-	if(argc != 2) {
-		cout << "Usage: ./Qsort <powerOfTen>" << endl;
+	if((argc < 2) || (argc > 3)) {
+		cout << "Usage: ./Qsort <powerOfTen> {if print}--print" << endl;
 		return 0;
 	}
 	const int IDX = atoi(argv[1]);
 	const int SIZE = pow_ten(IDX);
-	const short FNAME_SIZE = 9;
-	char inputFile[FNAME_SIZE];
+
+	char inputFile[STRING_BUFFER];
 	sprintf(inputFile, "%s%d%s", "10e",IDX, ".txt");
-	// char outputFile[FNAME_SIZE];
-	// sprintf(inputFile, "%s%d%s", "10e",IDX, "sortedC++.txt");
+	char outputFile[STRING_BUFFER];
+	sprintf(outputFile, "%s%d%s", "10e",IDX, "sortedC++.txt");
 
 	int *a = new int[SIZE];
 	array_init(a, inputFile);
 	quicksort(a, 0, SIZE - 1);
 	//To Test Sorting
-	//array_print(a, outputFile, SIZE);
+	if ((argc == 3) && (strcmp(argv[2],"--print") == 0)) {
+		array_print(a, outputFile, SIZE);
+	}
 	delete[] a;
 	cout << "Sorted "<< SIZE <<" integers in C++." << endl;
 	return 0;
 }
 
 void array_init(int *a, char *filename) {
-	const short MAX_CHARS = 12;
 	FILE *iF = fopen(filename, "r");
-	char line[MAX_CHARS]; int i = 0;
-	while (fgets(line, MAX_CHARS, iF) != NULL) {
+	char line[STRING_BUFFER]; int i = 0;
+	while (fgets(line, STRING_BUFFER, iF) != NULL) {
 		a[i++] = atoi(line);
 	}
 	fclose(iF);
 }
-/*
-void array_print(int *a, string filename, int size) {
+
+void array_print(int *a, char *filename, int size) {
 	FILE *oF = fopen(filename, "w");
-	int i;
-	for (i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++) {
 		fprintf(oF,"%d\n", a[i]);
 	}
 	fclose(oF);
 }
-*/
-
 
 void quicksort (int *a, int left, int right) {
 	if (left < right) {
@@ -76,13 +77,6 @@ int partition(int *a, int left, int right, int pivotIdx) {
 	swap(a[storeIdx], a[right]);
 	return storeIdx;
 }
-
-// void swap(int *a, int x, int y)
-// {
-// 	int tmp = a[x];
-// 	a[x] = a[y];
-// 	a[y] = tmp;
-// }
 
 /*Own function to avoid using
  * library version in each language

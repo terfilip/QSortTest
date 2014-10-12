@@ -9,18 +9,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define numChars 12
+#define STRING_BUFFER 12
 
-void file_check(char * filename) {
+void file_check(char * filename)
+{
 	FILE *toCheck = fopen(filename, "r");
 	if(!toCheck) {
 		puts("File not found");
 		return;
 	}
-	char line[numChars], nextLine[numChars];
-	fgets(line, numChars, toCheck);
+	char line[STRING_BUFFER], nextLine[STRING_BUFFER];
+	fgets(line, STRING_BUFFER, toCheck);
 	int i = 2, sorted = 1;
-	while(fgets(nextLine, numChars, toCheck) != NULL) {
+	while(fgets(nextLine, STRING_BUFFER, toCheck) != NULL) {
 		if(atoi(line) > atoi(nextLine)) {
 			printf("%s is NOT SORTED. Error at lines %d and %d.\n",filename, i, i-1);
 			sorted = 0;
@@ -35,7 +36,8 @@ void file_check(char * filename) {
 	}
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	if (argc != 2) {
 		puts("usage: ./CheckSort <filename>");
 		return 0;

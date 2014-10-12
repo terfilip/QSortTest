@@ -36,7 +36,7 @@
 	 }
 	  fclose($iF);
   }
-/*
+
   function print_array(& $a, $filename)
   {
 	  $oF = fopen($filename, "w");
@@ -45,7 +45,6 @@
 	  }
 	  fclose($oF);
   }
-*/
 
   function pow_ten($idx) {
 	if($idx == 0)
@@ -55,19 +54,22 @@
   }
 
   function main($argc, $argv) {
-	  if($argc != 2) {
+	  if((($argc < 2) || ($argc > 3))) {
 		echo "Usage Qsort.php <power of 10>".PHP_EOL;
 		return;
 	  }
-	  $IDX = (int)$argv[1];
+
+      $IDX = (int)$argv[1];
 	  $ARRAY_SIZE = pow_ten($IDX);
 	  $a = new SplFixedArray($ARRAY_SIZE);
 	  $ifName = "10e".$IDX.".txt";
-	  //$ofName = "10e".$IDX."sortedPHP.txt";
+	  $ofName = "10e".$IDX."sortedPHP.txt";
 	  init_array($a, $ifName, $ARRAY_SIZE);
 	  quicksort($a, 0, $ARRAY_SIZE - 1);
 	  //Used to test sorting
-	  //print_array($a, $ofName);
+      if(($argc == 3) && ($argv[2] == "--print")) {
+	     print_array($a, $ofName, $ARRAY_SIZE);
+      }
 	  unset($a);
 	  echo "Sorted ".$ARRAY_SIZE." ints in php".PHP_EOL;
   }

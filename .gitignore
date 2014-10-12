@@ -6,4 +6,5 @@ Qsort
 *.ods#
 .DS_Store
 bin/
+result/
 qshadoop/

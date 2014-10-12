@@ -29,13 +29,13 @@ def init_array(filename):
             yield int(line)
 
 
-# def print_array(a, filename):
-#     with open(filename, 'w') as f:
-#         f.write('\n'.join(str(n) for n in a))
+def print_array(a, filename):
+    with open(filename, 'w') as f:
+        f.write('\n'.join(str(n) for n in a))
 
 
-def main():
-    if len(argv) != 2:
+def main(argc,argv):
+    if (argc < 2) or (argc > 3):
         print("Usage ./Qsort.py <powerOfTen>")
         return
     IDX = int(argv[1])
@@ -44,8 +44,9 @@ def main():
     a = list(init_array(ifName))
     quicksort(a, 0, len(a) - 1)
     #Used to test sorting
-    # print_array(a, "10e%dsortedPY.txt" % IDX)
+    if (argc == 3) and (argv[2] == "--print"):
+        print_array(a, "10e%dsortedPY.txt" % IDX)
     print("Sorted %d ints in python." % len(a))
 
 if __name__ == '__main__':
-    main()
+    main(len(argv),argv)

@@ -1,6 +1,6 @@
 import java.io.File;
-//import java.io.PrintWriter;
-//import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -8,36 +8,38 @@ import java.util.Scanner;
 class Qsort {
 	public static void main(String[] args) {
 		try {
-			if (args.length != 1) {
-				System.out.println("Usage java Qsort <powerOfTen>");
+			if ((args.length < 1) || (args.length > 2)) {
+				System.out.println("Usage java Qsort <powerOfTen> {if print}--print");
 				System.exit(0);
 			}
 			final int IDX = Integer.parseInt(args[0]);
 			final int ARRAY_LENGTH = powTen(IDX);
 			String ifName = String.format("%s%d%s","10e",IDX, ".txt");
-			//String ofName = String.format("%s%d%s","10e",IDX, "sortedJava.txt");
+			String ofName = String.format("%s%d%s","10e",IDX, "sortedJava.txt");
 
 			int[] a = new int[ARRAY_LENGTH];
 			initArray(a, ifName);
 			quicksort(a, 0, ARRAY_LENGTH - 1);
 			//Used for testing
-			//printArray(a, ofName);
+			if ((args.length == 2) && (args[1].equals("--print"))) {
+				printArray(a, ofName);
+			}
+
 			System.out.printf("Sorted %d integers in Java.\n",ARRAY_LENGTH);
 		} catch(IOException ioe) {
 			System.out.println("File not found");
 			ioe.printStackTrace();
 		}
 	}
-	/*
-	public static void printArray(int[] a, String outFileName) throws IOException
-	{
+
+	public static void printArray(int[] a, String outFileName) throws IOException {
 		PrintWriter oStream = new PrintWriter(outFileName, "UTF-8");
 		for (int i = 0; i < a.length; i++) {
 			oStream.println(a[i]);
 		}
 		oStream.close();
 	}
-	*/
+
 	public static void initArray(int[] a, String inFileName) throws IOException {
 		Scanner iStream = new Scanner(new File(inFileName));
 		int i = 0;
