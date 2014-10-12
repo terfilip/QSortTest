@@ -11,7 +11,7 @@
 
 #define STRING_BUFFER 12
 
-void file_check(char * filename)
+void fileCheck(char * filename)
 {
 	FILE *toCheck = fopen(filename, "r");
 	if(!toCheck) {
@@ -42,6 +42,6 @@ int main(int argc, char *argv[])
 		puts("usage: ./CheckSort <filename>");
 		return 0;
 	}
-	file_check(argv[1]);
+	fileCheck(argv[1]);
 	return 0;
 }

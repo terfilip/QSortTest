@@ -29,7 +29,7 @@
 	  $a[$y] = $tmp;
   }
 
-  function init_array(& $a, $filename, $size) {
+  function initArray(& $a, $filename, $size) {
 	  $iF = fopen($filename, "r"); $i = 0;
 	  while($i < $size) {
 	    $a[$i++] = (int)fgets($iF);
@@ -37,7 +37,7 @@
 	  fclose($iF);
   }
 
-  function print_array(& $a, $filename)
+  function printArray(& $a, $filename)
   {
 	  $oF = fopen($filename, "w");
 	  for($i = 0; $i < count($a) - 1; $i++) {
@@ -46,11 +46,11 @@
 	  fclose($oF);
   }
 
-  function pow_ten($idx) {
+  function powTen($idx) {
 	if($idx == 0)
 		return 1;
 	 else
-		 return 10 * pow_ten($idx - 1);
+		 return 10 * powTen($idx - 1);
   }
 
   function main($argc, $argv) {
@@ -60,15 +60,15 @@
 	  }
 
       $IDX = (int)$argv[1];
-	  $ARRAY_SIZE = pow_ten($IDX);
+	  $ARRAY_SIZE = powTen($IDX);
 	  $a = new SplFixedArray($ARRAY_SIZE);
 	  $ifName = "10e".$IDX.".txt";
 	  $ofName = "10e".$IDX."sortedPHP.txt";
-	  init_array($a, $ifName, $ARRAY_SIZE);
+	  initArray($a, $ifName, $ARRAY_SIZE);
 	  quicksort($a, 0, $ARRAY_SIZE - 1);
 	  //Used to test sorting
       if(($argc == 3) && ($argv[2] == "--print")) {
-	     print_array($a, $ofName, $ARRAY_SIZE);
+	     printArray($a, $ofName, $ARRAY_SIZE);
       }
 	  unset($a);
 	  echo "Sorted ".$ARRAY_SIZE." ints in php".PHP_EOL;

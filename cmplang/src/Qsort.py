@@ -23,13 +23,13 @@ def partition(a, left, right, pivotIdx):
     return storeIdx
 
 
-def init_array(filename):
+def initArray(filename):
     with open(filename, 'r') as f:
         for line in f:
             yield int(line)
 
 
-def print_array(a, filename):
+def printArray(a, filename):
     with open(filename, 'w') as f:
         f.write('\n'.join(str(n) for n in a))
 
@@ -41,11 +41,11 @@ def main(argc,argv):
     IDX = int(argv[1])
 
     ifName = "10e%d.txt" % IDX
-    a = list(init_array(ifName))
+    a = list(initArray(ifName))
     quicksort(a, 0, len(a) - 1)
     #Used to test sorting
     if (argc == 3) and (argv[2] == "--print"):
-        print_array(a, "10e%dsortedPY.txt" % IDX)
+        printArray(a, "10e%dsortedPY.txt" % IDX)
     print("Sorted %d ints in python." % len(a))
 
 if __name__ == '__main__':
