@@ -11,8 +11,7 @@
 
 #define STRING_BUFFER 12
 
-void fileCheck(char * filename)
-{
+void fileCheck(char * filename) {
 	FILE *toCheck = fopen(filename, "r");
 	if(!toCheck) {
 		puts("File not found");
@@ -31,9 +30,8 @@ void fileCheck(char * filename)
 		i++;
 	}
 	fclose(toCheck);
-	if (sorted) {
+	if (sorted)
 		printf("The file %s contains sorted values.\n",filename);
-	}
 }
 
 int main(int argc, char *argv[])

@@ -31,9 +31,8 @@ int main(int argc, char *argv[]) {
 	arrayInit(a, inputFile);
 	quicksort(a, 0, SIZE - 1);
 	//To Test Sorting
-	if ((argc == 3) && (strcmp(argv[2],"--print") == 0)) {
+	if ((argc == 3) && (strcmp(argv[2],"--print") == 0)) 
 		arrayPrint(a, outputFile, SIZE);
-	}
 	delete[] a;
 	cout << "Sorted "<< SIZE <<" integers in C++." << endl;
 	return 0;
@@ -42,17 +41,15 @@ int main(int argc, char *argv[]) {
 void arrayInit(int *a, char *filename) {
 	FILE *iF = fopen(filename, "r");
 	char line[STRING_BUFFER]; int i = 0;
-	while (fgets(line, STRING_BUFFER, iF) != NULL) {
+	while (fgets(line, STRING_BUFFER, iF) != NULL)
 		a[i++] = atoi(line);
-	}
 	fclose(iF);
 }
 
 void arrayPrint(int *a, char *filename, int size) {
 	FILE *oF = fopen(filename, "w");
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++)
 		fprintf(oF,"%d\n", a[i]);
-	}
 	fclose(oF);
 }
 
@@ -62,18 +59,17 @@ void quicksort (int *a, int left, int right) {
 			int newPivotIdx = partition(a, left, right, pivotIdx);
 			quicksort(a, left, newPivotIdx -1);
 			quicksort(a, newPivotIdx + 1, right);
-		}
+	}
 }
 
 int partition(int *a, int left, int right, int pivotIdx) {
 	int pivotVal = a[pivotIdx];
 	swap(a[pivotIdx], a[right]);
 	int storeIdx = left;
-	for(int i = left; i < right; i++) {
-		if(a[i] < pivotVal) {
+
+	for(int i = left; i < right; i++)
+		if(a[i] < pivotVal)
 			swap(a[i], a[storeIdx++]);
-		}
-	}
 	swap(a[storeIdx], a[right]);
 	return storeIdx;
 }

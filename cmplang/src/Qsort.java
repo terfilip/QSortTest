@@ -21,12 +21,12 @@ class Qsort {
 			initArray(a, ifName);
 			quicksort(a, 0, ARRAY_LENGTH - 1);
 			//Used for testing
-			if ((args.length == 2) && (args[1].equals("--print"))) {
+			if ((args.length == 2) && (args[1].equals("--print")))
 				printArray(a, ofName);
-			}
 
 			System.out.printf("Sorted %d integers in Java.\n",ARRAY_LENGTH);
-		} catch(IOException ioe) {
+		}
+		catch(IOException ioe) {
 			System.out.println("File not found");
 			ioe.printStackTrace();
 		}
@@ -34,18 +34,16 @@ class Qsort {
 
 	public static void printArray(int[] a, String outFileName) throws IOException {
 		PrintWriter oStream = new PrintWriter(outFileName, "UTF-8");
-		for (int i = 0; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++)
 			oStream.println(a[i]);
-		}
 		oStream.close();
 	}
 
 	public static void initArray(int[] a, String inFileName) throws IOException {
 		Scanner iStream = new Scanner(new File(inFileName));
 		int i = 0;
-		while(iStream.hasNextInt()) {
+		while(iStream.hasNextInt())
 			a[i++] = iStream.nextInt();
-		}
 		iStream.close();
 	}
 
@@ -62,11 +60,9 @@ class Qsort {
 		int pivotVal = a[pivotIdx];
 		swap(a, pivotIdx, right);
 		int storeIdx = left;
-		for(int i = left; i < right; i++) {
-			if(a[i] < pivotVal) {
+		for(int i = left; i < right; i++)
+			if(a[i] < pivotVal)
 				swap(a, i, storeIdx++);
-			}
-		}
 		swap(a, storeIdx, right);
 		return storeIdx;
 	}
